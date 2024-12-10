@@ -1,0 +1,16 @@
+<tr>- for insert row
+<tbody>- for insert table 
+"radio"- used for either/or option
+"text"- upgrade version of type
+
+
+padding-
+#-to select id
+.-to select class
+
+
+C is a static language
+to create a variable we use datatype
+
+Python is a dynamic typed language
+don't want datatype to create variable

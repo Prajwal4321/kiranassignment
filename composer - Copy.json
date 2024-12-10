@@ -1,0 +1,8 @@
+{
+    "name": "registration-form",
+    "description": "A simple registration form app",
+    "type": "project",
+    "require": {
+        "php": ">=7.4"
+    }
+}

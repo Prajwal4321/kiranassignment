@@ -1,0 +1,255 @@
+export default function App(){
+  function handleClick(){
+    if(document.body.style.background==="white")
+    {
+      document.body.style.background="aqua"
+    }
+    else{
+      document.body.style.background="white"
+
+    }
+  }
+  return(
+    <div>
+    <button onClick={handleClick}>Toggle</button>
+    </div>
+  )
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default function App(){
+  function handleClick(){
+    if(document.body.style.backgroundcolor==="black")
+    {
+      document.body.style.backgroundcolor="white";
+      document.body.style.color="black"
+    }
+    else{
+      document.body.style.backgroundcolor="black"
+
+    }
+    
+  }
+  return(
+    <div>
+      <h3>hello sunil</h3> 
+
+    <button onClick={handleClick}>Click</button>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+import { useState } from "react";
+export default function App(){
+  const[ username,setUsername] = useState("");
+  const[ password,setpassword] =useState("")
+  function handlesubmit(e){
+    e.preventDefault();
+    console.log(username)
+    console.log(password)
+  }
+  return(
+    <div>
+      <form onSubmit={handlesubmit}>
+        <label>Username</label>
+        <input type="text"
+        onChange={(e)=>{setUsername(e.target.value)}}
+        />
+        <label>password</label>
+        <input type="text"
+        onChange={(e)=>{setpassword(e.target.value)}}
+         />
+        <input type="submit"/>
+      </form>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+App.jsx
+
+import { BrowserRouter,Routes, Route} from "react-router-dom"
+import About from "./About"
+import Signup from "./Signup"
+import Signin from "./Signin"
+import Count from "./Count"
+export default function App(){
+    return(
+        <div>
+            <BrowserRouter>
+            <About/>
+            <Routes>
+                <Route path="/" element={<Signup />}/>
+                <Route path="/signin" element={<Signin />}/> 
+                <Route path="/signin/count" element={<Count/>}/>  
+            </Routes>
+            </BrowserRouter>
+        </div>
+    )
+}
+
+
+
+
+import { BrowserRouter,Routes, Route} from "react-router-dom"
+import About from "./About"
+import Signup from "./signup"
+import Signin from "./Signin"
+export default function App(){
+    return(
+        <div>
+            <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Signup />}/>
+                <Route path="/signin" element={<Signin />}/> 
+                <Route path="/signin/about" element={<About/>}/>   
+            </Routes>
+            </BrowserRouter>
+        </div>
+    )
+}
+
+  
+
+
+
+
+const express=require("express");
+const app=express();
+
+app.get("/",(req,res)=>{
+    res.send("hello from backend")
+})
+app.get("/video",(req,res)=>{
+    res.send("from photos")
+})
+app.listen(3000,()=>{
+
+
+    console.log("your server is listening at port 3000")
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const express=require("express");
+const app=express();
+app.use(express.json())
+app.get("/",(req,res)=>{
+    res.send("hello from backend")
+})
+app.post("/post",(req,res)=>{
+    const {username,password} =req.body;
+    res.send(`This is username :${username} and This is password :${password}`)
+})
+app.post("/register",(req,res)=>{
+    const {email,username,password} =req.body;
+    res.send(`This is email :${email} and This is username :${username} and This is password :${password}`)
+})
+app.post("/login",(req,res)=>{
+    const {email,password} =req.body;
+    res.send(`This is email :${email} and This is password :${password}`)
+})
+app.listen(3000,()=>{
+    console.log("your server is listening at port 3000")
+})
+ 
+
+
+
+
+
+
+
+
+
+
+const express=require("express");
+const app=express();
+const fs=require("fs");
+app.use(express.json())
+app.post("/post",(req,res)=>{
+    const {username,password} =req.body;
+    fs.writeFile(".a/text",`${username},and ${password}`,(err)=>{
+        res.send("success")
+    })
+})
+app.listen(3000,()=>{
+    console.log("Your server is listening at port 3000")
+})
+ 
+
+
+
+
+
+
+
+
+const express=require("express");
+const app=express();
+const fs=require("fs");
+app.use(express.json())
+app.post("/",(req,res)=>{
+    const username = req.body.username;
+    const password = req.body.password;
+    const user = {
+        username:username,
+        password:password
+    }
+    fs.writeFile("./a.text",JSON.stringify(user),(err)=>{
+        res.send("success")
+    })
+})
+
+app.get("/",(req,res)=>{
+    fs.readFile("./a.txt","utf-8",(err,data)=>{
+        res.send(data)
+    })
+})
+app.listen(3000,()=>{
+    console.log("Your server is listening at port 3000")
+})
+
+  
